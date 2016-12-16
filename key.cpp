@@ -76,12 +76,12 @@ void gestione_tasti_menu(ALLEGRO_EVENT &ev, strumenti &tool) {
 
                 if(tool.key[KEY_UP]) {
                         tool.selez_menu--;
-                        std::cout << tool.selez_menu << '\n';
+                        //std::cout << tool.selez_menu << '\n';
                 }
 
                 if(tool.key[KEY_DOWN]) {
                         tool.selez_menu++;
-                        std::cout << tool.selez_menu << '\n';
+                        //std::cout << tool.selez_menu << '\n';
                 }
 
                 if(tool.key[KEY_LEFT]) {
@@ -92,7 +92,6 @@ void gestione_tasti_menu(ALLEGRO_EVENT &ev, strumenti &tool) {
 
                 }
 
-        }
         tool.redraw = true;
 }
 

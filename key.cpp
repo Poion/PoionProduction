@@ -1,5 +1,5 @@
 #include "funz_gioco.h"
-
+//eue
 
 
 void gestione_tasti(ALLEGRO_EVENT &ev, personaggio &pg, strumenti &tool) {

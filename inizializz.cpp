@@ -49,10 +49,10 @@ void initz(strumenti &tool,personaggio &pg, float FPS){
                 return;
         }
 
-        tool.menu[0] = al_load_bitmap("1.png");
-        tool.menu[1] = al_load_bitmap("2.png");
-        tool.menu[2] = al_load_bitmap("3.png");
-        tool.menu[3] = al_load_bitmap("4.png");
+        tool.menu[0] = al_load_bitmap("img//1.png");
+        tool.menu[1] = al_load_bitmap("img//2.png");
+        tool.menu[2] = al_load_bitmap("img//3.png");
+        tool.menu[3] = al_load_bitmap("img//4.png");
         for (int i = 0; i <= 3; i++) {
                 if(!tool.menu[i]) {
                         tool.controllo = -1;

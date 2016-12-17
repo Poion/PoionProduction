@@ -22,6 +22,7 @@ struct strumenti {
         ALLEGRO_DISPLAY *display;
         ALLEGRO_EVENT_QUEUE *event_queue = NULL;
         ALLEGRO_TIMER *timer = NULL;
+        ALLEGRO_BITMAP *menu[4];
         bool redraw = true;
         bool doexit = false;
         bool key[4] = { false, false, false, false };

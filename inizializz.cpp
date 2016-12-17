@@ -40,7 +40,6 @@ void initz(strumenti &tool,personaggio &pg, float FPS){
 
         pg.bouncer_x = tool.SCREEN_W / 2.0 - pg.BOUNCER_SIZE / 2.0;
         pg.bouncer_y = tool.SCREEN_H / 2.0 - pg.BOUNCER_SIZE / 2.0;
-        pg.bouncer = al_create_bitmap(pg.BOUNCER_SIZE, pg.BOUNCER_SIZE);
         pg.bouncer = al_load_bitmap("cat.png");
         if(!pg.bouncer) {
                 tool.controllo = -1;
@@ -50,12 +49,33 @@ void initz(strumenti &tool,personaggio &pg, float FPS){
                 return;
         }
 
+        tool.menu[0] = al_load_bitmap("1.png");
+        tool.menu[1] = al_load_bitmap("2.png");
+        tool.menu[2] = al_load_bitmap("3.png");
+        tool.menu[3] = al_load_bitmap("4.png");
+        for (int i = 0; i <= 3; i++) {
+                if(!tool.menu[i]) {
+                        tool.controllo = -1;
+                        std::cout << i << '\n';
+                        for (int b = 0; i <= b; b++) {
+                                al_destroy_bitmap(tool.menu[b]);
+                        }
+                        al_destroy_bitmap(pg.bouncer);
+                        al_destroy_display(tool.display);
+                        al_destroy_timer(tool.timer);
+                        return;
+                }
+        }
+
         al_set_target_bitmap(al_get_backbuffer(tool.display));
 
         tool.event_queue = al_create_event_queue();
 
         if(!tool.event_queue) {
                 tool.controllo = -1;
+                for (int i = 0; 3 <= i; i++) {
+                        al_destroy_bitmap(tool.menu[i]);
+                }
                 al_destroy_bitmap(pg.bouncer);
                 al_destroy_display(tool.display);
                 al_destroy_timer(tool.timer);
@@ -73,7 +93,6 @@ void initz(strumenti &tool,personaggio &pg, float FPS){
         al_flip_display();
 
         al_start_timer(tool.timer);
-
 }
 void start(strumenti &tool, personaggio &pg) {
 
@@ -86,7 +105,10 @@ void start(strumenti &tool, personaggio &pg) {
 
                 al_clear_to_color(al_map_rgb(0,0,0));
 
-                //al_draw_bitmap(pg.bouncer, pg.bouncer_x, pg.bouncer_y, 0);
+                al_draw_bitmap(tool.menu[0], 100, 100, 0);
+                al_draw_bitmap(tool.menu[1], 100, 200, 0);
+                al_draw_bitmap(tool.menu[2], 100, 300, 0);
+                al_draw_bitmap(tool.menu[3], 100, 400, 0);
                 if (tool.selez_menu == 0)
                         al_draw_scaled_bitmap(pg.bouncer, 0, 0, al_get_bitmap_width(pg.bouncer), al_get_bitmap_height(pg.bouncer),pg.bouncer_x, pg.bouncer_y,al_get_display_width(tool.display)/10, al_get_display_height(tool.display)/10, 0);
                 if (tool.selez_menu == 1)
@@ -94,6 +116,7 @@ void start(strumenti &tool, personaggio &pg) {
                 if (tool.selez_menu == 2)
                         al_draw_scaled_bitmap(pg.bouncer, 0, 0, al_get_bitmap_width(pg.bouncer), al_get_bitmap_height(pg.bouncer),pg.bouncer_x, pg.bouncer_y+200,al_get_display_width(tool.display)/10, al_get_display_height(tool.display)/10, 0);
                 al_flip_display();
+
         }
         return;
 }
@@ -102,4 +125,7 @@ void sudoku(strumenti tool,personaggio pg) {
         al_destroy_timer(tool.timer);
         al_destroy_display(tool.display);
         al_destroy_event_queue(tool.event_queue);
+        for (int i = 0; 3 <= i; i++) {
+                al_destroy_bitmap(tool.menu[i]);
+        }
 }

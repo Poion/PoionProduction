@@ -93,6 +93,7 @@ void initz(strumenti &tool,personaggio &pg, float FPS){
         al_flip_display();
 
         al_start_timer(tool.timer);
+
 }
 void start(strumenti &tool, personaggio &pg) {
 
@@ -105,16 +106,17 @@ void start(strumenti &tool, personaggio &pg) {
 
                 al_clear_to_color(al_map_rgb(0,0,0));
 
-                al_draw_bitmap(tool.menu[0], 100, 100, 0);
-                al_draw_bitmap(tool.menu[1], 100, 200, 0);
-                al_draw_bitmap(tool.menu[2], 100, 300, 0);
-                al_draw_bitmap(tool.menu[3], 100, 400, 0);
-                if (tool.selez_menu == 0)
+                al_draw_bitmap(tool.menu[0], (tool.SCREEN_W * 50)/100 - 150 / 2.0, (tool.SCREEN_H * 30)/100 - 60, 0);
+                al_draw_bitmap(tool.menu[1], (tool.SCREEN_W * 50)/100 - 150 / 2.0, (tool.SCREEN_H * 40)/100 - 60, 0);
+                al_draw_bitmap(tool.menu[2], (tool.SCREEN_W * 50)/100 - 200 / 2.0, (tool.SCREEN_H * 50)/100 - 60, 0);
+                al_draw_bitmap(tool.menu[3], (tool.SCREEN_W * 50)/100 - 150 / 2.0, (tool.SCREEN_H * 60)/100 - 60, 0);
+                /*if (tool.selez_menu == 0)
                         al_draw_scaled_bitmap(pg.bouncer, 0, 0, al_get_bitmap_width(pg.bouncer), al_get_bitmap_height(pg.bouncer),pg.bouncer_x, pg.bouncer_y,al_get_display_width(tool.display)/10, al_get_display_height(tool.display)/10, 0);
                 if (tool.selez_menu == 1)
                         al_draw_scaled_bitmap(pg.bouncer, 0, 0, al_get_bitmap_width(pg.bouncer), al_get_bitmap_height(pg.bouncer),pg.bouncer_x, pg.bouncer_y+100,al_get_display_width(tool.display)/10, al_get_display_height(tool.display)/10, 0);
                 if (tool.selez_menu == 2)
                         al_draw_scaled_bitmap(pg.bouncer, 0, 0, al_get_bitmap_width(pg.bouncer), al_get_bitmap_height(pg.bouncer),pg.bouncer_x, pg.bouncer_y+200,al_get_display_width(tool.display)/10, al_get_display_height(tool.display)/10, 0);
+                */
                 al_flip_display();
 
         }
